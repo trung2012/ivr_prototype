@@ -6,7 +6,7 @@ import { stepNames } from '../utils/constants';
 export default (BaseComponent: React.FunctionComponent) => (
     () => {
         const { wizardState, decrementStep, incrementStep } = useContext(WizardContext);
-        const { currentStep, productKey, issueArea, user } = wizardState;
+        const { currentStep, productKey, issueArea, user, customerIssueDescription } = wizardState;
         const [error, setError] = useState('');
 
         useEffect(() => {
@@ -21,6 +21,11 @@ export default (BaseComponent: React.FunctionComponent) => (
 
             if (stepNames[currentStep] === 'issue' && !issueArea) {
                 setError('Please select an issue to continue');
+                return;
+            }
+
+            if (stepNames[currentStep] === 'description' && !customerIssueDescription) {
+                setError('Please describe your issue to continue');
                 return;
             }
 

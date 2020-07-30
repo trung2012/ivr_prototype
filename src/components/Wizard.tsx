@@ -12,7 +12,7 @@ import './Wizard.scss';
 import { CustomDialog } from './CustomDialog';
 
 const Wizard = () => {
-    const { wizardState, setCurrentStep } = useContext(WizardContext);
+    const { wizardState, setCurrentStep, reset } = useContext(WizardContext);
     const { currentStep } = wizardState;
 
     const renderContent = () => {
@@ -46,7 +46,10 @@ const Wizard = () => {
             {
                 currentStep > 0 &&
                 <CustomDialog onClick={
-                    () => { setCurrentStep(0) }
+                    () => {
+                        setCurrentStep(0);
+                        reset()
+                    }
                 } />
             }
         </div>

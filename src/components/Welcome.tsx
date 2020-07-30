@@ -14,7 +14,7 @@ const Welcome = () => {
                 <ContentHeading text='Welcome to the troubleshooting wizard (IVR)' />
                 <p className='welcome__text'>
                     Please follow the wizard's instructions.
-                    This wizard will help us understand your issue and better assist you.
+                    This wizard will help us understand your issue correctly and better assist you.
                 <br />
                     You will be connected to a live support agent at the end.
                 </p>

@@ -9,11 +9,26 @@ import './SupportModalities.scss';
 import { Spinner, SpinnerSize } from '@fluentui/react';
 
 const SupportModalities = () => {
-    const { wizardState: { user } } = useContext(WizardContext);
+    const { wizardState } = useContext(WizardContext);
+    const { user, product, issueArea, customerIssueDescription } = wizardState;
     const [isConnectingToAgent, setIsConnectingToAgent] = useState(false);
+    const [modalityChosen, setModalityChosen] = useState('');
     const modalityOptions = modalities[user!.subscriptionType];
 
-    if (isConnectingToAgent) return <Spinner label='Connecting you to an agent...' size={SpinnerSize.large} />
+    if (isConnectingToAgent) {
+        return (
+            <>
+                <Spinner label='Connecting you to an agent...' size={SpinnerSize.large} />
+                <h4>User information</h4>
+                <p>Name: {user!.name}</p>
+                <p>Subscription type: {subscriptionTypeText[user!.subscriptionType]}</p>
+                <p>Product: {product}</p>
+                <p>Issue area: {issueArea}</p>
+                <p>Problem description: {customerIssueDescription}</p>
+                <p>Modality chosen: {modalityChosen}</p>
+            </>
+        )
+    }
 
     return (
         <>
@@ -30,7 +45,10 @@ const SupportModalities = () => {
                         iconName={capitalize(option)}
                         waitTime={waitTimes[option]}
                         modalityName={capitalize(option)}
-                        onClick={() => { setIsConnectingToAgent(true) }}
+                        onClick={() => {
+                            setModalityChosen(option);
+                            setIsConnectingToAgent(true);
+                        }}
                     />
                 })
             }

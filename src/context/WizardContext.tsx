@@ -87,6 +87,8 @@ const wizardReducer = (state: IWizardState, action: IAction) => {
                 ...state,
                 user: userAccounts[Math.floor(Math.random() * userAccounts.length)]
             }
+        case 'reset':
+            return initialState;
         default:
             return state;
     }
@@ -101,6 +103,7 @@ interface IContextState {
     setIssueArea: (issueArea: IDropdownOption) => void;
     setIssueDescription: (description: string) => void;
     signIn: () => void;
+    reset: () => void;
 }
 
 export const WizardContext = createContext<IContextState>({
@@ -111,7 +114,8 @@ export const WizardContext = createContext<IContextState>({
     setProduct: () => { },
     setIssueArea: () => { },
     setIssueDescription: () => { },
-    signIn: () => { }
+    signIn: () => { },
+    reset: () => { }
 });
 
 export const WizardProvider: React.FunctionComponent<IWizardProviderProps> = ({ children }) => {
@@ -145,6 +149,10 @@ export const WizardProvider: React.FunctionComponent<IWizardProviderProps> = ({ 
         dispatch({ type: 'sign_in' });
     }
 
+    const reset = () => {
+        dispatch({ type: 'reset' });
+    }
+
     return (
         <WizardContext.Provider value={{
             wizardState,
@@ -154,7 +162,8 @@ export const WizardProvider: React.FunctionComponent<IWizardProviderProps> = ({ 
             setProduct,
             setIssueArea,
             setIssueDescription,
-            signIn
+            signIn,
+            reset
         }}>
             {children}
         </WizardContext.Provider>
