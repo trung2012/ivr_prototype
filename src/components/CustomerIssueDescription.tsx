@@ -35,6 +35,7 @@ export const CustomerIssueDescription: React.FunctionComponent = () => {
                     styles={textFieldStyles}
                     onBlur={() => setIssueDescription(textFieldValue)}
                     multiline
+                    autoFocus
                     rows={5}
                 />
             </Stack>
