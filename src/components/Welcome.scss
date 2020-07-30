@@ -1,0 +1,14 @@
+.welcome {
+    padding-left: 1rem;
+
+    &__heading {
+        width: 90%;
+        padding: .5rem 1rem .5rem 0;
+        border-bottom: 1px solid black;
+    }
+
+    &__text {
+        line-height: 2.5;
+        margin-bottom: 1rem;
+    }
+}

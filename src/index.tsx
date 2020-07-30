@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import { WizardProvider } from './context/WizardContext';
+import { initializeIcons } from '@uifabric/icons';
+import './index.css';
+
 import * as serviceWorker from './serviceWorker';
+
+initializeIcons();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <WizardProvider>
+      <App />
+    </WizardProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
