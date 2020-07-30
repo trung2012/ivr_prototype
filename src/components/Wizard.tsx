@@ -7,12 +7,12 @@ import CustomerIssueDescription from './CustomerIssueDescription';
 import SignIn from './SignIn';
 import SupportModalities from './SupportModalities';
 import { WizardContext } from '../context/WizardContext';
-import { PrimaryButton, IconButton } from '@fluentui/react';
 
 import './Wizard.scss';
+import { CustomDialog } from './CustomDialog';
 
 const Wizard = () => {
-    const { wizardState, setCurrentStep, incrementStep, decrementStep } = useContext(WizardContext);
+    const { wizardState, setCurrentStep } = useContext(WizardContext);
     const { currentStep } = wizardState;
 
     const renderContent = () => {
@@ -37,23 +37,17 @@ const Wizard = () => {
             <h1>Troubleshooting Wizard</h1>
             <ProgressBar />
             <div className='main-content'>
-                {
-                    renderContent()
-                }
+                <div className='main-content__center'>
+                    {
+                        renderContent()
+                    }
+                </div>
             </div>
             {
                 currentStep > 0 &&
-                <>
-                    <PrimaryButton className='btn__go-back' onClick={decrementStep}>Back</PrimaryButton>
-                    <PrimaryButton className='btn__go-forward' onClick={incrementStep}>Next</PrimaryButton>
-                    <IconButton
-                        iconProps={{ iconName: 'Refresh' }}
-                        title="Restart"
-                        ariaLabel="Restart"
-                        className='btn__reset'
-                        onClick={() => setCurrentStep(0)}
-                    />
-                </>
+                <CustomDialog onClick={
+                    () => { setCurrentStep(0) }
+                } />
             }
         </div>
     );

@@ -1,0 +1,45 @@
+.support-modality-card {
+    display: inline-block;
+    padding: 2.2rem 1.5rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 3px;
+    box-shadow: 0px 2px 7.2px 0px rgba(0, 0, 0, 0.18), 0px 0.6px 1.8px 0px rgba(0, 0, 0, 0.11);
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 0px 0.1px 1px #edebe9, 
+        0px 6.4px 14.4px 0px rgba(0, 0, 0, 0.18), 
+        0px 1.2px 3.6px 0px rgba(0, 0, 0, 0.11);
+    }
+}
+
+.modality-name {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.cta {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: rgb(0, 120, 212);
+}
+
+.wait-time-number {
+    font-weight: 500;
+    
+    &--good {
+        color: green;
+    }
+
+    &--bad {
+        color: red;
+    }
+}

@@ -7,7 +7,7 @@
     0px 6.4px 14.4px 0px rgba(0, 0, 0, 0.18), 
     0px 1.2px 3.6px 0px rgba(0, 0, 0, 0.11);
     border-radius: 3px;
-    min-height: 70vh;
+    min-height: 75vh;
 
     h1 {
         font-weight: 500;
@@ -18,7 +18,10 @@
 }
 
 .main-content {
-    padding-left: 5rem;
+    &__center {
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 
 .btn {
@@ -39,4 +42,8 @@
         top: 1.5rem;
         right: 1.5rem;
     }
+}
+
+.error {
+    margin-top: 1rem;
 }

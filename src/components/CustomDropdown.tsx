@@ -8,21 +8,23 @@ interface ICustomDropdownProps {
     dropdownOptions: IDropdownOption[];
     placeholder: string;
     handleSubmit: (product: IDropdownOption) => void;
+    selectedItem: IDropdownOption;
 }
 
 export const CustomDropdown: React.FunctionComponent<ICustomDropdownProps> = ({
     dropdownOptions,
     label,
     placeholder,
-    handleSubmit
+    handleSubmit,
+    selectedItem: defaultSelectedItem
 }) => {
-    const [selectedItem, setSelectedItem] = React.useState<IDropdownOption>();
+    const [selectedItem, setSelectedItem] = React.useState<IDropdownOption>(defaultSelectedItem);
 
     const onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption | undefined): void => {
         if (item) {
             handleSubmit(item);
+            setSelectedItem(item);
         }
-        setSelectedItem(item);
     };
 
     return (

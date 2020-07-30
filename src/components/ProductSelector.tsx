@@ -3,20 +3,25 @@ import CustomDropdown from './CustomDropdown';
 
 import { productOptions } from '../utils/constants';
 import { WizardContext } from '../context/WizardContext';
+import withNavigationButtons from '../hoc/withNavigationButtons';
+import ContentHeading from './ContentHeading';
 
 const ProductSelector = () => {
     const { wizardState, setProduct } = useContext(WizardContext);
-
-    console.log(wizardState.product)
+    const { productKey, product } = wizardState;
 
     return (
-        <CustomDropdown
-            dropdownOptions={productOptions}
-            label='Select your product'
-            placeholder='Select your product'
-            handleSubmit={setProduct}
-        />
+        <>
+            <ContentHeading text='Which product do you have?' />
+            <CustomDropdown
+                dropdownOptions={productOptions}
+                label='Select your product'
+                placeholder='Select your product'
+                handleSubmit={setProduct}
+                selectedItem={{ key: productKey, text: product }}
+            />
+        </>
     );
 }
 
-export default ProductSelector;
+export default withNavigationButtons(ProductSelector);

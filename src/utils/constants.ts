@@ -1,8 +1,26 @@
 import { IDropdownOption } from "@fluentui/react";
 
-export const waitTimes = {
-    chat: '5 minutes',
-    call: '10 minutes'
+export const stepNames = [
+    'welcome',
+    'product',
+    'issue',
+    'description',
+    'signin',
+    'complete'
+]
+
+export const modalities = {
+    'perpetual': ['chat'],
+    'subscription': ['chat', 'phone']
+}
+
+interface IWaitTimes {
+    [key: string]: number;
+}
+
+export const waitTimes: IWaitTimes = {
+    'chat': 5,
+    'phone': 10
 };
 
 export enum subscriptionType {
@@ -84,3 +102,8 @@ export const userAccounts = [
     { id: 1, name: 'Trung', subscriptionType: subscriptionType.Perpetual },
     { id: 2, name: 'Kapil', subscriptionType: subscriptionType.Subscription }
 ]
+
+export const subscriptionTypeText = {
+    'perpetual': 'One-time Purchase',
+    'subscription': 'Subscription-based'
+}
